@@ -62,7 +62,7 @@
  (not (= (at vd1) pos12))
  (not (= (at vd1) pos14))
 )
-(:global-goal (and
+(:private-goal (and
  (= (performedD GLO1001) vd1)
  (= (performedD GLO1002) vd2)
  (= (performedD GLO1003) vd3)

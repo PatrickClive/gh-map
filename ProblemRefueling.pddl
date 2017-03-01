@@ -49,7 +49,7 @@
  (not (= (at vr2) pos11))
  (not (= (at vr2) pos13))
 )
-(:global-goal (and	
+(:private-goal (and	
  (= (performedR GLO1001) vr1)
  (= (performedR GLO1002) vr2)
  (= (performedR GLO1003) vr1)
