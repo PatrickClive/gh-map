@@ -8,17 +8,17 @@
 (:functions
   (at ?c - catering) - place
   (in ?f - flight) - place
-  (perfomedB ?f - flight) - boarding
-  (perfomedC ?f - flight) - catering
-  (perfomedD ?f - flight) - deboarding
-  (perfomedR ?f - flight) - refueling
+  (performedb ?f - flight) - boarding
+  (performedc ?f - flight) - catering
+  (performedd ?f - flight) - deboarding
+  (performedr ?f - flight) - refueling
   )
 (:action moveC
  :parameters (?c - catering ?d - deboarding ?f - flight ?x ?y - place)
- :precondition (and (myAgent ?c) (= (at ?c) ?x) (not (= (performedC ?f) ?c)) (= (performedD ?f) ?d))
+ :precondition (and (myAgent ?c) (= (at ?c) ?x) (not (= (performedc ?f) ?c)) (not (= (performedd ?f) ?d)))
  :effect (and (assign (at ?c) ?y)))
 (:action perfC
  :parameters (?f - flight ?c - catering ?p - place)
  :precondition (and (myAgent ?c) (= (at ?c) ?p) (=(in ?f)?p))
- :effect (and (performedC ?f) ?c))
+ :effect (and (assign (performedc ?f) ?c)))
  )
