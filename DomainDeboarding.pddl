@@ -1,6 +1,6 @@
 (define (domain handling)
 (:requirements :typing :equality :fluents)
-(:types place flight agent - object
+(:types place flight - object
         deboarding catering refueling boarding - agent)
 (:predicates
   (myAgent ?a - deboarding)
@@ -8,18 +8,14 @@
 (:functions
   (at ?d - deboarding) - place
   (in ?f - flight) - place
-  (performedb ?f - flight) - boarding
-  (performedc ?f - flight) - catering
-  (performedd ?f - flight) - deboarding
-  (performedr ?f - flight) - refueling
+  (performed ?f - flight) - (either deboarding catering refueling boarding)  
   )
 (:action moveD
- :parameters (?d - deboarding ?f - flight ?x ?y - place)
+ :parameters (?d - deboarding ?x ?y - place)
  :precondition (and (myAgent ?d) (= (at ?d) ?x))
  :effect (and (assign (at ?d) ?y)))
 (:action perD
  :parameters (?f - flight ?d - deboarding ?p - place)
- :precondition (and (myAgent ?d) (= (at ?d) ?p) (=(in ?f)?p) 
- 				(not (= (performedd ?f) ?d)))
- :effect (and (assign (performedd ?f) ?d)))
+ :precondition (and (myAgent ?d) (= (at ?d) ?p) (=(in ?f)?p) (not (= (performed ?f) ?d)))
+ :effect (and (assign (performed ?f) ?d)))
  )
